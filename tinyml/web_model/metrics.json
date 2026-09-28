@@ -1,0 +1,40 @@
+{
+  "dataset": {
+    "name": "UCI Blood Transfusion Service Center",
+    "uci_id": 176,
+    "instances": 748,
+    "features": 4,
+    "test_instances": 150,
+    "random_state": 42
+  },
+  "full": {
+    "accuracy": 0.8133333333333334,
+    "precision": 0.6818181818181818,
+    "recall": 0.4166666666666667,
+    "f1": 0.5172413793103449,
+    "roc_auc": 0.7837475633528265,
+    "parameters": 2945,
+    "size_kb": 64.22265625,
+    "latency_ms": 5.829975499864304
+  },
+  "tiny": {
+    "accuracy": 0.8266666666666667,
+    "precision": 0.75,
+    "recall": 0.4166666666666667,
+    "f1": 0.5357142857142857,
+    "roc_auc": 0.7899610136452242,
+    "parameters": 225,
+    "size_kb": 27.5771484375,
+    "latency_ms": 5.882019999944532
+  },
+  "tiny_int8": {
+    "accuracy": 0.8266666666666667,
+    "precision": 0.75,
+    "recall": 0.4166666666666667,
+    "f1": 0.5357142857142857,
+    "roc_auc": 0.7902046783625731,
+    "parameters": 225,
+    "size_kb": 3.328125,
+    "latency_ms": 0.006728999778715661
+  }
+}

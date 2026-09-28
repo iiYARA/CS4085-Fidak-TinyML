@@ -1,0 +1,22 @@
+{
+  "features": [
+    "Recency",
+    "Frequency",
+    "Monetary",
+    "Time"
+  ],
+  "mean": [
+    9.608786610878662,
+    5.623430962343096,
+    1405.857740585774,
+    34.51046025104603
+  ],
+  "scale": [
+    8.443244321841846,
+    5.985725274095802,
+    1496.4313185239523,
+    24.02933387339415
+  ],
+  "dataset": "UCI Blood Transfusion Service Center (ID 176)",
+  "note": "For educational research only; not a medical eligibility model."
+}
