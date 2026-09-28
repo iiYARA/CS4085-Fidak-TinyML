@@ -1,3 +1,4 @@
+<?php $active = $active ?? ''; ?>
 <html>
 <head>
     <meta charset="utf-8">
