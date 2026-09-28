@@ -1,0 +1,6 @@
+tensorflow==2.16.1
+tensorflowjs==4.20.0
+ucimlrepo==0.0.7
+scikit-learn==1.5.2
+pandas==2.2.3
+numpy==1.26.4
