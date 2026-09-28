@@ -6,6 +6,7 @@ on:
     paths:
       - 'Fidak_TinyML_Trained.zip'
       - '.github/workflows/extract-trained-models.yml'
+      - '.github/trigger-extract.txt'
 
 permissions:
   contents: write
