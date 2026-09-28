@@ -1,0 +1,33 @@
+name: Extract trained TinyML models
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'Fidak_TinyML_Trained.zip'
+      - '.github/workflows/extract-trained-models.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  extract-and-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Extract trained model package
+        run: unzip -o Fidak_TinyML_Trained.zip -d .
+
+      - name: Commit extracted model files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add tinyml/artifacts tinyml/web_model
+          if git diff --cached --quiet; then
+            echo "No model file changes to commit."
+          else
+            git commit -m "Add trained TinyML model files"
+            git push
+          fi
