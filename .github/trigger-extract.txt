@@ -1,0 +1,1 @@
+Extract Fidak_TinyML_Trained.zip into tinyml/artifacts and tinyml/web_model.
