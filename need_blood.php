@@ -310,17 +310,23 @@ if (isset($_POST['search'])) {
         }
 
 
-        .donor-img {
+        .donor-visual {
 
             width: 100%;
 
             height: 150px;
 
-            object-fit: contain;
+            display: flex;
 
-            padding: 25px;
+            align-items: center;
+
+            justify-content: center;
 
             background: #fffafa;
+
+            color: var(--primary);
+
+            font-size: 64px;
         }
 
 
@@ -1026,15 +1032,13 @@ include('head.php');
                     <div class="donor-card">
 
 
-                        <img
-
-                            src="https://www.svgrepo.com/show/1939/blood.svg"
-
-                            class="donor-img"
-
-                            alt="Blood Donation Logo"
-
+                        <div
+                            class="donor-visual"
+                            aria-label="Blood donation"
+                            role="img"
                         >
+                            <i class="fas fa-tint" aria-hidden="true"></i>
+                        </div>
 
 
                         <div class="donor-details">
@@ -1639,11 +1643,7 @@ async function runTinyMLRanking()
 
             +
 
-            ' TinyML model files are not generated yet. Run '
-
-            +
-
-            '<code>tinyml/train_and_export.py</code> first.';
+            ' TinyML model could not be loaded. Please check the local model files.';
 
 
 
