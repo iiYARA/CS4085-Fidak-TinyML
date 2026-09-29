@@ -87,76 +87,63 @@ if (isset($_POST['search'])) {
 
     mysqli_stmt_execute($stmt);
 
+    /*
+     * Use bind_result instead of mysqli_stmt_get_result().
+     * Some shared hosting environments (including free hosting)
+     * do not provide mysqlnd, which makes get_result() unavailable
+     * and causes a 500 error after submitting Smart Match.
+     */
+    mysqli_stmt_bind_result(
+        $stmt,
+        $donor_id,
+        $donor_name,
+        $donor_number,
+        $donor_mail,
+        $donor_age,
+        $donor_gender,
+        $donor_blood,
+        $donor_address,
+        $total_donations,
+        $last_donation_date,
+        $first_donation_date
+    );
 
-    $result =
-        mysqli_stmt_get_result($stmt);
+    while (mysqli_stmt_fetch($stmt)) {
 
+        $row = [
+            'donor_id' => $donor_id,
+            'donor_name' => $donor_name,
+            'donor_number' => $donor_number,
+            'donor_mail' => $donor_mail,
+            'donor_age' => $donor_age,
+            'donor_gender' => $donor_gender,
+            'donor_blood' => $donor_blood,
+            'donor_address' => $donor_address,
+            'total_donations' => $total_donations,
+            'last_donation_date' => $last_donation_date,
+            'first_donation_date' => $first_donation_date
+        ];
 
-    while (
-        $row =
-        mysqli_fetch_assoc($result)
-    ) {
+        $frequency = (int)($row['total_donations'] ?? 0);
 
-        $frequency =
-            (int)(
-                $row['total_donations']
-                ?? 0
-            );
-
-
-        $recency =
-            monthsBetweenDates(
-                $row['last_donation_date']
-            );
-
-
-        $time =
-            monthsBetweenDates(
-                $row['first_donation_date']
-            );
-
+        $recency = monthsBetweenDates($row['last_donation_date']);
+        $time = monthsBetweenDates($row['first_donation_date']);
 
         $row['has_history'] = (
-
             $frequency > 0
-
             &&
-
             $recency !== null
-
             &&
-
             $time !== null
         );
 
-
-        $row['ml_recency'] =
-            $row['has_history']
-            ? $recency
-            : 0;
-
-
-        $row['ml_frequency'] =
-            $row['has_history']
-            ? $frequency
-            : 0;
-
-
-        $row['ml_monetary'] =
-            $row['has_history']
-            ? ($frequency * 250)
-            : 0;
-
-
-        $row['ml_time'] =
-            $row['has_history']
-            ? max($time, $recency)
-            : 0;
-
+        $row['ml_recency'] = $row['has_history'] ? $recency : 0;
+        $row['ml_frequency'] = $row['has_history'] ? $frequency : 0;
+        $row['ml_monetary'] = $row['has_history'] ? ($frequency * 250) : 0;
+        $row['ml_time'] = $row['has_history'] ? max($time, $recency) : 0;
 
         $donors[] = $row;
     }
-
 
     mysqli_stmt_close($stmt);
 }
