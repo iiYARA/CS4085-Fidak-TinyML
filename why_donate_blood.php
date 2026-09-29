@@ -47,16 +47,38 @@
             border-radius: 2px;
         }
         
-        .content-image {
+        .donation-visual {
+            min-height: 360px;
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            max-height: 600px;
-            width: 100%;
-            object-fit: contain;
+            background: #fff7f7;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px;
+            color: var(--primary);
+        }
+
+        .donation-visual i {
+            font-size: 7rem;
+            margin-bottom: 20px;
+        }
+
+        .donation-visual h3 {
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+
+        .donation-visual p {
+            color: var(--gray);
+            margin: 0;
+            max-width: 360px;
         }
         
-        .benefits-list {
+.benefits-list {
             margin-top: 30px;
         }
         
@@ -86,9 +108,13 @@
                 padding: 50px 0;
             }
             
-            .content-image {
+            .donation-visual {
                 margin-top: 30px;
-                max-height: 400px;
+                min-height: 280px;
+            }
+
+            .donation-visual i {
+                font-size: 5rem;
             }
         }
     </style>
@@ -157,7 +183,11 @@
                 </div>
                 
                 <div class="col-lg-6">
-                    <img src="image/08f2fccc45d2564f74ead4a6d5086871.png" class="content-image" alt="Blood donation importance">
+                    <div class="donation-visual" role="img" aria-label="Blood donation importance">
+                        <i class="fas fa-hand-holding-medical" aria-hidden="true"></i>
+                        <h3>Every Donation Matters</h3>
+                        <p>One blood donation can support patients during emergencies, surgeries, and ongoing treatment.</p>
+                    </div>
                 </div>
             </div>
         </div>
